@@ -192,7 +192,13 @@ get_platform_config() {
 	linux)
 		# Linux configuration using Proton (Steam Play)
 		PREFIX="$HOME/.steam/steam/steamapps/compatdata/2379780"
-		PROTON_DIR="$HOME/.steam/steam/steamapps/common/Proton 9.0 (Beta)"
+		# Better Proton path finding:
+		PROTON_DIR=$(find \
+		"$HOME/.steam/steam/steamapps/common" \
+		"$HOME/.local/share/Steam" \
+		"$HOME/.var/app/com.valvesoftware.Steam" \
+		"/usr/share/steam" \
+    	-type d -regextype posix-extended -regex '.*/Proton[^/]*$' 2>/dev/null | head -n 1)
 		EXE="$HOME/.steam/debian-installation/steamapps/common/Balatro/Balatro.exe"
 
 		STEAM_PATH="$PROTON_DIR"
