@@ -225,20 +225,18 @@ uvx balatrobot serve --love-path "/path/to/love" --lovely-path "/path/to/liblove
 
 ### Native Platform (Linux Only)
 
-The `native` platform runs Balatro from source code using the LÖVE framework installed via package manager. This requires specific directory structure:
+The `native` platform runs Balatro from source code using the LÖVE framework. Install LÖVE from your distribution's package manager (e.g., `apt install love`, `pacman -S love`), from [Flathub](https://flathub.org/apps/org.love2d.love), or build from source.
 
-**Required Paths:**
+**Parameters:**
 
-- `BALATROBOT_BALATRO_PATH`: Directory containing Balatro source code with `main.lua`
-- `BALATROBOT_LOVE_PATH`: Path to LÖVE executable (find with `which love`), e.g., `/usr/bin/love`
+- `BALATROBOT_BALATRO_PATH`: Path to Balatro.love (if you click `browse local files` on steam it should be in that directory.)
+- `BALATROBOT_LOVE_PATH`: Path to LÖVE executable (find with `which love`)
 - `BALATROBOT_LOVELY_PATH`: Must be `/usr/local/lib/liblovely.so`
-- Mods directory: `~/.config/love/Mods` (auto-discovered, used by lovely)
-- Settings directory: `~/.local/share/love/balatro` (must contain game settings)
 
 **Setup:**
 
 ```bash
-# Copy game settings to the expected location
+# If you want to transfer your game settings, copy them to LÖVE's expected location:
 mkdir -p ~/.local/share/love/balatro
 cp -r /path/to/balatro/settings/* ~/.local/share/love/balatro/
 
