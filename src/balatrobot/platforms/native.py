@@ -38,7 +38,7 @@ class NativeLauncher(BaseLauncher):
     - Linux operating system
     - `love` executable in PATH or specified via --love-path
     - liblovely.so specified via --lovely-path
-    - Game directory specified via --balatro-path
+    - Game executable specified via --balatro-path
     """
 
     def validate_paths(self, config: Config) -> None:
@@ -51,13 +51,12 @@ class NativeLauncher(BaseLauncher):
         # balatro_path (required, no auto-detect)
         if config.balatro_path is None:
             errors.append(
-                "Game directory is required.\n"
+                "Game executable is required.\n"
                 "  Set via: --balatro-path or BALATROBOT_BALATRO_PATH"
             )
         else:
             balatro = Path(config.balatro_path)
-            if not balatro.is_dir():
-                errors.append(f"Game directory not found: {balatro}")
+            
 
         # lovely_path (required, auto-detect)
         if config.lovely_path is None:
