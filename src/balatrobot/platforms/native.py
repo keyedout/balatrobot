@@ -20,6 +20,7 @@ def _detect_lovely_path() -> Path | None:
     candidates = [
         Path("/usr/local/lib/liblovely.so"),
         Path.home() / ".local/lib/liblovely.so",
+        Path("/usr/lib/liblovely.so"),
     ]
     for candidate in candidates:
         if candidate.is_file():
